@@ -17,3 +17,8 @@ variable "pve-token" {
     type = string
     default = env("PROXMOX_TOKEN")
 }
+
+variable "pve-name-node" {
+    type = string
+    default = env("PROXMOX_NAME_NODE")
+}
