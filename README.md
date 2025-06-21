@@ -17,6 +17,9 @@ All sensitive data is configured using environment variables. See the Usage sect
 - Packer: v1.13.0
 - Proxmox VE: 8.3.0
 
+### Notes
+The ISO image must be downloaded to the Proxmox server's datastore before deploying the template.
+
 ### Usage
 1. Clone the repository.
 2. Create a .env file in the root of the project with the following content:
@@ -26,6 +29,7 @@ export PROXMOX_NAME_NODE="pve-node"
 export PROXMOX_URL="https://192.168.111.111:8006/api2/json"
 export PROXMOX_USER="packer@pam!packer-token"
 export PROXMOX_TOKEN="aaabbbcc-dd11-ddee-1111-bbbbb1122323"
+export PROXMOX_NAME_DATASTORE='local-storage'
 
 # SSH user configuration
 export SSH_USERNAME="user"

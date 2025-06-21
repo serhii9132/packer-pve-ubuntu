@@ -1,4 +1,8 @@
 locals {
+  name_iso_file = "ubuntu-24.04.2-live-server-amd64.iso"
+  iso_file = "${var.pve-name-datastore}:iso/${local.name_iso_file}"
+  iso_checksum = "file:https://releases.ubuntu.com/noble/SHA256SUMS"
+
   http_dir = "/http"
   autoinstall_files = {
     "/meta-data" = file("${local.http_dir}/meta-data")
@@ -44,16 +48,6 @@ variable "scsi_controller" {
 variable "communicator" {
   type    = string
   default = "ssh"
-}
-
-variable "iso_file" {
-  type    = string
-  default = "storage:iso/ubuntu-24.04.2-live-server-amd64.iso"
-}
-
-variable "iso_checksum" {
-  type    = string
-  default = "file:https://releases.ubuntu.com/noble/SHA256SUMS"
 }
 
 variable "type_bus" {

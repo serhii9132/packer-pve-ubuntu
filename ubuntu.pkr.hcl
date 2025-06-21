@@ -39,8 +39,8 @@ source "proxmox-iso" "ubuntu" {
   boot_iso {
     type         = var.type_bus
     unmount      = var.is_umount_boot_iso
-    iso_file     = var.iso_file
-    iso_checksum = var.iso_checksum
+    iso_file     = local.iso_file
+    iso_checksum = local.iso_checksum
   }
 
   ssh_username = var.ssh_username

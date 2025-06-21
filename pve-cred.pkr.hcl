@@ -23,6 +23,11 @@ variable "pve_node_name" {
     default = env("PROXMOX_NAME_NODE")
 }
 
+variable "pve-name-datastore" {
+    type = string
+    default = env("PROXMOX_NAME_DATASTORE")
+}
+
 variable "ssh_username" {
   type = string
   default = env("SSH_USERNAME")
