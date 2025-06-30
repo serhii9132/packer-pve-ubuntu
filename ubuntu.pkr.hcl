@@ -24,7 +24,7 @@ source "proxmox-iso" "ubuntu" {
   communicator    = var.communicator
 
   disks {
-    storage_pool = var.storage_pool
+    storage_pool = var.pve-name-datastore
     disk_size    = var.disk_size
     format       = var.format_disk
     io_thread    = var.is_io_thread

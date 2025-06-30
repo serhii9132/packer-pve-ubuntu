@@ -12,7 +12,7 @@ locals {
 
 variable "vm_name" {
   type    = string
-  default = "ubuntu-22.04.2-lts"
+  default = "ubuntu-22.04-lts"
 }
 
 variable "os" {
@@ -63,11 +63,6 @@ variable "is_umount_boot_iso" {
 variable "disk_size" {
   type    = string
   default = "50G"
-}
-
-variable "storage_pool" {
-  type    = string
-  default = "storage"
 }
 
 variable "format_disk" {
