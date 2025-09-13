@@ -5,8 +5,8 @@ locals {
 
   http_dir = "/http"
   autoinstall_files = {
-    "/meta-data" = file("${local.http_dir}/meta-data")
-    "/user-data" = templatefile("${local.http_dir}/user-data.pkrtpl.hcl", { var = var })
+    "/meta-data" = file(abspath("${path.root}/${local.http_dir}/meta-data"))
+    "/user-data" = templatefile(abspath("${path.root}/${local.http_dir}/user-data.pkrtpl.hcl"), { var = var })
   }
 }
 
