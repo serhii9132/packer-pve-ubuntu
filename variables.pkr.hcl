@@ -1,13 +1,17 @@
 locals {
-  name_iso_file = "ubuntu-24.04.2-live-server-amd64.iso"
-  iso_file = "${var.pve-name-datastore}:iso/${local.name_iso_file}"
   iso_checksum = "file:https://releases.ubuntu.com/noble/SHA256SUMS"
-
-  http_dir = "/http"
+  name_iso_file = "ubuntu-24.04.3-live-server-amd64.iso"
+  iso_url = "https://releases.ubuntu.com/noble/${local.name_iso_file}"
+    
   autoinstall_files = {
-    "/meta-data" = file(abspath("${path.root}/${local.http_dir}/meta-data"))
-    "/user-data" = templatefile(abspath("${path.root}/${local.http_dir}/user-data.pkrtpl.hcl"), { var = var })
+    "/meta-data" = file(abspath("${path.root}/cidata/meta-data"))
+    "/user-data" = templatefile(abspath("${path.root}/cidata/user-data.pkrtpl.hcl"), { var = var })
   }
+}
+
+variable "task_timeout" {
+  type    = string
+  default = "15m"
 }
 
 variable "vm_name" {
@@ -55,7 +59,12 @@ variable "type_bus" {
   default = "scsi"
 }
 
-variable "is_umount_boot_iso" {
+variable "is_umount_iso" {
+  type    = bool
+  default = true
+}
+
+variable "iso_download_pve" {
   type    = bool
   default = true
 }
@@ -93,4 +102,9 @@ variable "ssh_timeout" {
 variable "boot_wait" {
   type    = string
   default = "10s"
+}
+
+variable "cd_label" {
+  type    = string
+  default = "cidata"
 }
