@@ -16,7 +16,7 @@ variable "task_timeout" {
 
 variable "vm_name" {
   type    = string
-  default = "ubuntu-22.04-lts"
+  default = "ubuntu-24.04-lts"
 }
 
 variable "os" {
